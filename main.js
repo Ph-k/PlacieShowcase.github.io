@@ -1964,7 +1964,7 @@ class AppComponent {
     }
 }
 AppComponent.ɵfac = function AppComponent_Factory(t) { return new (t || AppComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_service_user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"])); };
-AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AppComponent, selectors: [["app-root"]], decls: 5, vars: 1, consts: [["id", "homePage"], [1, "logo"], ["src", "./assets/logo.svg", "alt", "Placie", "height", "60", "width", "200", "id", "icon", 3, "click"], [4, "ngIf"], ["class", "link", 4, "ngIf"], ["class", "right", 4, "ngIf"], ["id", "username", 4, "ngIf"], [1, "link"], ["routerLink", "/administrator"], ["routerLink", "/host"], ["routerLink", "/reservations"], [1, "right"], [3, "click"], ["routerLink", "/messages"], ["routerLink", "/editAccount"], ["id", "username"], [3, "ngSubmit"], ["name", "username", "type", "text"], ["name", "password", "type", "password"], ["routerLink", "/register"]], template: function AppComponent_Template(rf, ctx) { if (rf & 1) {
+AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AppComponent, selectors: [["app-root"]], decls: 5, vars: 1, consts: [["id", "homePage"], [1, "logo"], ["src", "../assets/logo.svg", "alt", "Placie", "height", "60", "width", "200", "id", "icon", 3, "click"], [4, "ngIf"], ["class", "link", 4, "ngIf"], ["class", "right", 4, "ngIf"], ["id", "username", 4, "ngIf"], [1, "link"], ["routerLink", "/administrator"], ["routerLink", "/host"], ["routerLink", "/reservations"], [1, "right"], [3, "click"], ["routerLink", "/messages"], ["routerLink", "/editAccount"], ["id", "username"], [3, "ngSubmit"], ["name", "username", "type", "text"], ["name", "password", "type", "password"], ["routerLink", "/register"]], template: function AppComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "img", 2);
@@ -4436,8 +4436,9 @@ __webpack_require__.r(__webpack_exports__);
 class MessageService {
     constructor(http) {
         this.http = http;
-        this.SendMessageUrl = 'https://localhost:8443/Messages';
-        this.MessagesUrl = 'https://localhost:8443';
+        this.BaseUrl = 'https://placie-springboot.herokuapp.com/';
+        this.SendMessageUrl = this.BaseUrl + 'Messages';
+        this.MessagesUrl = this.BaseUrl;
         this.authorizationHeader = { headers: { Authorization: localStorage.getItem('token') } };
     }
     getMessages() {
@@ -4494,10 +4495,11 @@ __webpack_require__.r(__webpack_exports__);
 class PlaceService {
     constructor(http) {
         this.http = http;
-        this.placesUrl = 'https://localhost:8443/Places';
-        this.searchUrl = 'https://localhost:8443/PlacesSearch';
-        this.availabilityUrl = 'https://localhost:8443/Availabilities';
-        this.reservationUrl = 'https://localhost:8443/Reservations';
+        this.BaseUrl = 'https://placie-springboot.herokuapp.com/';
+        this.placesUrl = this.BaseUrl + 'Places';
+        this.searchUrl = this.BaseUrl + 'PlacesSearch';
+        this.availabilityUrl = this.BaseUrl + 'Availabilities';
+        this.reservationUrl = this.BaseUrl + 'Reservations';
     }
     authorizationHeader() {
         return { headers: { Authorization: localStorage.getItem('token') } };
@@ -4526,7 +4528,7 @@ class PlaceService {
         return this.http.get(this.placesUrl + '/' + placeId);
     }
     getPlacesBy(hostId) {
-        return this.http.get('https://localhost:8443/PlacesBy/' + hostId.toString(), this.authorizationHeader());
+        return this.http.get(this.BaseUrl + 'PlacesBy/' + hostId.toString(), this.authorizationHeader());
     }
     getAvailabilities() {
         return this.http.get(this.availabilityUrl, this.authorizationHeader());
@@ -4584,42 +4586,42 @@ class PlaceService {
         return this.http.post(this.reservationUrl, reservation, this.authorizationHeader());
     }
     myReservations() {
-        return this.http.get('https://localhost:8443/MyReservations', this.authorizationHeader());
+        return this.http.get(this.BaseUrl + 'MyReservations', this.authorizationHeader());
     }
     ReservationsFor(placeId) {
-        return this.http.get('https://localhost:8443/ReservationsFor/' + placeId, this.authorizationHeader());
+        return this.http.get(this.BaseUrl + 'ReservationsFor/' + placeId, this.authorizationHeader());
     }
     getReviews() {
-        return this.http.get('https://localhost:8443/Reviews', this.authorizationHeader());
+        return this.http.get(this.BaseUrl + 'Reviews', this.authorizationHeader());
     }
     getReviewsXml() {
         const httpHeader = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
             Accept: 'application/xml',
             Authorization: localStorage.getItem('token')
         });
-        return this.http.get('https://localhost:8443/Reviews', { headers: httpHeader, responseType: 'text' });
+        return this.http.get(this.BaseUrl + 'Reviews', { headers: httpHeader, responseType: 'text' });
     }
     postReview(newReview) {
-        return this.http.post('https://localhost:8443/Reviews', newReview, this.authorizationHeader());
+        return this.http.post(this.BaseUrl + 'Reviews', newReview, this.authorizationHeader());
     }
     getReviewsForPlace(placeId) {
-        return this.http.get('https://localhost:8443/ReviewsFor/' + placeId.toString());
+        return this.http.get(this.BaseUrl + 'ReviewsFor/' + placeId.toString());
     }
     getReviewsForReservation(reservationId) {
-        return this.http.get('https://localhost:8443/ReviewsForReservation/' + reservationId.toString());
+        return this.http.get(this.BaseUrl + 'ReviewsForReservation/' + reservationId.toString());
     }
     getPlacePhotos() {
-        return this.http.get('https://localhost:8443/PlacePhotos', this.authorizationHeader());
+        return this.http.get(this.BaseUrl + 'PlacePhotos', this.authorizationHeader());
     }
     getPlacePhotosXml() {
         const httpHeader = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
             Accept: 'application/xml',
             Authorization: localStorage.getItem('token')
         });
-        return this.http.get('https://localhost:8443/PlacePhotos', { headers: httpHeader, responseType: 'text' });
+        return this.http.get(this.BaseUrl + 'PlacePhotos', { headers: httpHeader, responseType: 'text' });
     }
     getAverageStars(placeId) {
-        return this.http.get('https://localhost:8443/AverageStars/' + placeId);
+        return this.http.get(this.BaseUrl + 'AverageStars/' + placeId);
     }
 }
 PlaceService.ɵfac = function PlaceService_Factory(t) { return new (t || PlaceService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"])); };
@@ -4738,11 +4740,12 @@ __webpack_require__.r(__webpack_exports__);
 class UserService {
     constructor(http) {
         this.http = http;
-        this.registrationUrl = 'https://localhost:8443/Registration';
-        this.usersUrl = 'https://localhost:8443/Users';
-        this.pendingHostsUrl = 'https://localhost:8443/PendingHosts';
-        this.LoginUrl = 'https://localhost:8443/login';
-        this.RootUrl = 'https://localhost:8443';
+        this.BaseUrl = 'https://placie-springboot.herokuapp.com/';
+        this.registrationUrl = this.BaseUrl + 'Registration';
+        this.usersUrl = this.BaseUrl + 'Users';
+        this.pendingHostsUrl = this.BaseUrl + 'PendingHosts';
+        this.LoginUrl = this.BaseUrl + 'login';
+        this.RootUrl = this.BaseUrl;
     }
     authorizationHeader() {
         return { headers: { Authorization: localStorage.getItem('token') } };
