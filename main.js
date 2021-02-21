@@ -4436,8 +4436,8 @@ __webpack_require__.r(__webpack_exports__);
 class MessageService {
     constructor(http) {
         this.http = http;
-        this.BaseUrl = 'https://placie-springboot.herokuapp.com/';
-        this.SendMessageUrl = this.BaseUrl + 'Messages';
+        this.BaseUrl = 'https://placie-springboot.herokuapp.com';
+        this.SendMessageUrl = this.BaseUrl + '/Messages';
         this.MessagesUrl = this.BaseUrl;
         this.authorizationHeader = { headers: { Authorization: localStorage.getItem('token') } };
     }
@@ -4495,11 +4495,11 @@ __webpack_require__.r(__webpack_exports__);
 class PlaceService {
     constructor(http) {
         this.http = http;
-        this.BaseUrl = 'https://placie-springboot.herokuapp.com/';
-        this.placesUrl = this.BaseUrl + 'Places';
-        this.searchUrl = this.BaseUrl + 'PlacesSearch';
-        this.availabilityUrl = this.BaseUrl + 'Availabilities';
-        this.reservationUrl = this.BaseUrl + 'Reservations';
+        this.BaseUrl = 'https://placie-springboot.herokuapp.com';
+        this.placesUrl = this.BaseUrl + '/Places';
+        this.searchUrl = this.BaseUrl + '/PlacesSearch';
+        this.availabilityUrl = this.BaseUrl + '/Availabilities';
+        this.reservationUrl = this.BaseUrl + '/Reservations';
     }
     authorizationHeader() {
         return { headers: { Authorization: localStorage.getItem('token') } };
@@ -4528,7 +4528,7 @@ class PlaceService {
         return this.http.get(this.placesUrl + '/' + placeId);
     }
     getPlacesBy(hostId) {
-        return this.http.get(this.BaseUrl + 'PlacesBy/' + hostId.toString(), this.authorizationHeader());
+        return this.http.get(this.BaseUrl + '/PlacesBy/' + hostId.toString(), this.authorizationHeader());
     }
     getAvailabilities() {
         return this.http.get(this.availabilityUrl, this.authorizationHeader());
@@ -4586,42 +4586,42 @@ class PlaceService {
         return this.http.post(this.reservationUrl, reservation, this.authorizationHeader());
     }
     myReservations() {
-        return this.http.get(this.BaseUrl + 'MyReservations', this.authorizationHeader());
+        return this.http.get(this.BaseUrl + '/MyReservations', this.authorizationHeader());
     }
     ReservationsFor(placeId) {
-        return this.http.get(this.BaseUrl + 'ReservationsFor/' + placeId, this.authorizationHeader());
+        return this.http.get(this.BaseUrl + '/ReservationsFor/' + placeId, this.authorizationHeader());
     }
     getReviews() {
-        return this.http.get(this.BaseUrl + 'Reviews', this.authorizationHeader());
+        return this.http.get(this.BaseUrl + '/Reviews', this.authorizationHeader());
     }
     getReviewsXml() {
         const httpHeader = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
             Accept: 'application/xml',
             Authorization: localStorage.getItem('token')
         });
-        return this.http.get(this.BaseUrl + 'Reviews', { headers: httpHeader, responseType: 'text' });
+        return this.http.get(this.BaseUrl + '/Reviews', { headers: httpHeader, responseType: 'text' });
     }
     postReview(newReview) {
-        return this.http.post(this.BaseUrl + 'Reviews', newReview, this.authorizationHeader());
+        return this.http.post(this.BaseUrl + '/Reviews', newReview, this.authorizationHeader());
     }
     getReviewsForPlace(placeId) {
-        return this.http.get(this.BaseUrl + 'ReviewsFor/' + placeId.toString());
+        return this.http.get(this.BaseUrl + '/ReviewsFor/' + placeId.toString());
     }
     getReviewsForReservation(reservationId) {
-        return this.http.get(this.BaseUrl + 'ReviewsForReservation/' + reservationId.toString());
+        return this.http.get(this.BaseUrl + '/ReviewsForReservation/' + reservationId.toString());
     }
     getPlacePhotos() {
-        return this.http.get(this.BaseUrl + 'PlacePhotos', this.authorizationHeader());
+        return this.http.get(this.BaseUrl + '/PlacePhotos', this.authorizationHeader());
     }
     getPlacePhotosXml() {
         const httpHeader = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
             Accept: 'application/xml',
             Authorization: localStorage.getItem('token')
         });
-        return this.http.get(this.BaseUrl + 'PlacePhotos', { headers: httpHeader, responseType: 'text' });
+        return this.http.get(this.BaseUrl + '/PlacePhotos', { headers: httpHeader, responseType: 'text' });
     }
     getAverageStars(placeId) {
-        return this.http.get(this.BaseUrl + 'AverageStars/' + placeId);
+        return this.http.get(this.BaseUrl + '/AverageStars/' + placeId);
     }
 }
 PlaceService.ɵfac = function PlaceService_Factory(t) { return new (t || PlaceService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"])); };
@@ -4740,11 +4740,11 @@ __webpack_require__.r(__webpack_exports__);
 class UserService {
     constructor(http) {
         this.http = http;
-        this.BaseUrl = 'https://placie-springboot.herokuapp.com/';
-        this.registrationUrl = this.BaseUrl + 'Registration';
-        this.usersUrl = this.BaseUrl + 'Users';
-        this.pendingHostsUrl = this.BaseUrl + 'PendingHosts';
-        this.LoginUrl = this.BaseUrl + 'login';
+        this.BaseUrl = 'https://placie-springboot.herokuapp.com';
+        this.registrationUrl = this.BaseUrl + '/Registration';
+        this.usersUrl = this.BaseUrl + '/Users';
+        this.pendingHostsUrl = this.BaseUrl + '/PendingHosts';
+        this.LoginUrl = this.BaseUrl + '/login';
         this.RootUrl = this.BaseUrl;
     }
     authorizationHeader() {
@@ -4773,12 +4773,12 @@ class UserService {
     }
     getUserId(username) {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-            const response = yield this.http.get(this.RootUrl + 'UserId/' + username, this.authorizationHeader()).toPromise();
+            const response = yield this.http.get(this.RootUrl + '/UserId/' + username, this.authorizationHeader()).toPromise();
             return response;
         });
     }
     findUserId(username) {
-        return this.http.get(this.RootUrl + 'UserId/' + username, this.authorizationHeader());
+        return this.http.get(this.RootUrl + '/UserId/' + username, this.authorizationHeader());
     }
     updateUser(user, id) {
         this.http.put(this.usersUrl + '/' + id, user, this.authorizationHeader()).subscribe();
@@ -4819,10 +4819,10 @@ class UserService {
     UploadImage(username, Image) {
         const formdata = new FormData();
         formdata.append('file', Image, Image.name);
-        return this.http.post(this.RootUrl + 'Users/Image/' + username, formdata, this.authorizationHeader());
+        return this.http.post(this.RootUrl + '/Users/Image/' + username, formdata, this.authorizationHeader());
     }
     GetImageUrl(username) {
-        return this.RootUrl + 'Users/Image/' + username;
+        return this.RootUrl + '/Users/Image/' + username;
     }
 }
 UserService.ɵfac = function UserService_Factory(t) { return new (t || UserService)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"])); };
