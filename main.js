@@ -4773,12 +4773,12 @@ class UserService {
     }
     getUserId(username) {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-            const response = yield this.http.get(this.RootUrl + '/UserId/' + username, this.authorizationHeader()).toPromise();
+            const response = yield this.http.get(this.RootUrl + 'UserId/' + username, this.authorizationHeader()).toPromise();
             return response;
         });
     }
     findUserId(username) {
-        return this.http.get(this.RootUrl + '/UserId/' + username, this.authorizationHeader());
+        return this.http.get(this.RootUrl + 'UserId/' + username, this.authorizationHeader());
     }
     updateUser(user, id) {
         this.http.put(this.usersUrl + '/' + id, user, this.authorizationHeader()).subscribe();
@@ -4819,10 +4819,10 @@ class UserService {
     UploadImage(username, Image) {
         const formdata = new FormData();
         formdata.append('file', Image, Image.name);
-        return this.http.post(this.RootUrl + '/Users/Image/' + username, formdata, this.authorizationHeader());
+        return this.http.post(this.RootUrl + 'Users/Image/' + username, formdata, this.authorizationHeader());
     }
     GetImageUrl(username) {
-        return this.RootUrl + '/Users/Image/' + username;
+        return this.RootUrl + 'Users/Image/' + username;
     }
 }
 UserService.ɵfac = function UserService_Factory(t) { return new (t || UserService)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"])); };
