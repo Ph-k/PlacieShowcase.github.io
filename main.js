@@ -1659,7 +1659,7 @@ class PlaceDetailsComponent {
             this.style = new ol.style.Style({
                 image: new ol.style.Icon({
                     scale: 0.02,
-                    src: '../assets/point.png'
+                    src: './assets/point.png'
                 })
             });
             this.feature.setStyle(this.style);
@@ -2412,7 +2412,7 @@ class NewPlaceComponent {
         this.style = new ol.style.Style({
             image: new ol.style.Icon({
                 scale: 0.02,
-                src: '../assets/point.png'
+                src: './assets/point.png'
             })
         });
         this.feature.setStyle(this.style);
@@ -3212,7 +3212,7 @@ class EditPlaceComponent {
             this.style = new ol.style.Style({
                 image: new ol.style.Icon({
                     scale: 0.02,
-                    src: '../assets/point.png'
+                    src: './assets/point.png'
                 })
             });
             this.feature.setStyle(this.style);
